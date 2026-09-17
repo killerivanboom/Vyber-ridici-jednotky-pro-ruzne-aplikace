@@ -98,6 +98,7 @@ EEPROM:
 Uchování dat: Nevolatilní (data zůstávají zachována).
 
 Rychlost zápisu: Pomalejší než RAM, ale umožňuje zápis a mazání po jednotlivých bytech (na rozdíl od Flash). Používá se pro ukládání konfiguračních parametrů, provozních stavů nebo naměřených dat, která se často mění a nesmí se ztratit při výpadku proudu.
+
 2. **Reálný čas a determinismus:**
    - Proč pro řízení rychlého technologického děje (např. reakce na nouzové zastavení do 5 ms) použijeme spíše **MCU / PLC** než běžný operační systém na **MPU** (např. Raspberry Pi s OS Linux)?
 
