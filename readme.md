@@ -79,11 +79,46 @@ Proč se u bezpečnostních aplikací v letectví nebo jaderné energetice stál
 
 1. **Typy pamětí:**
    - Jaký je zásadní rozdíl mezi pamětí **RAM**, **Flash** a **EEPROM** v mikrokontroléru/PLC z hlediska uchování dat po odpojení napájení a rychlosti zápisu?
+   - RAM (Random Access Memory):
+
+Uchování dat: Volatilní (po odpojení napájení se data ztratí).
+
+Rychlost zápisu: Extrémně rychlá (řádově nanosekundy), neomezený počet zápisů. Slouží pro běh programu a proměnné za provozu.
+
+
+Flash paměť:
+
+Uchování dat: Nevolatilní (data zůstávají zachována i bez napájení).
+
+Rychlost zápisu: Pomalejší, zápis probíhá v blocích (stránkách) a před zápisem je obvykle nutné blok smazat. Má omezený životní cyklus (počet cyklů přepsání). Slouží pro uložení samotného firmwaru/programu.
+
+
+EEPROM:
+
+Uchování dat: Nevolatilní (data zůstávají zachována).
+
+Rychlost zápisu: Pomalejší než RAM, ale umožňuje zápis a mazání po jednotlivých bytech (na rozdíl od Flash). Používá se pro ukládání konfiguračních parametrů, provozních stavů nebo naměřených dat, která se často mění a nesmí se ztratit při výpadku proudu.
 2. **Reálný čas a determinismus:**
    - Proč pro řízení rychlého technologického děje (např. reakce na nouzové zastavení do 5 ms) použijeme spíše **MCU / PLC** než běžný operační systém na **MPU** (např. Raspberry Pi s OS Linux)?
+
+   - Determinismus: MCU a PLC pracují deterministicky – přesně víme, jak dlouho bude trvat vykonání instrukce nebo obsloužení vstupu/výstupu. Žádné skryté procesy nečekaně nezdrží reakci.
+
+   - Běžný operační systém (např. Linux na Raspberry Pi): Je non-real-time (pokud nemá speciální RT patch). Jádro systému může kdykoliv pozastavit vaši aplikaci kvůli správě paměti, procesů nebo síťové komunikaci (tzv. jitter). Zpoždění tak může přesáhnout požadovaných 5 ms, což je u bezpečnostních funkcí nepřípustné.
+
+   - 
 3. **Odolnost a IP krytí:**
    - Dešifrujte označení **IP68** (co přesně znamená první číslice 6 a druhá číslice 8).
    - Jaké minimální krytí IP musí mít zařízení určené pro instalaci venku pod přístřeškem, kde hrozí stříkající voda a prach?
    - Jak se liší konstrukce běžného kancelářského PC od **průmyslového PC (iPC)** (např. z hlediska chlazení, napájení, vibrací a konektorů)?
+
+   - ýznam označení IP68:
+
+První číslice (6): Úplná ochrana před vniknutím prachu (prachotěsné).
+
+Druhá číslice (8): Ochrana proti trvalému ponoření do vody (za podmínek specifikovaných výrobcem, obvykle hloubka nad 1 metr).
+
+Minimální krytí pro venkovní použití pod přístřeškem (stříkající voda a prach):
+
+Minimální doporučené krytí je IP54 (chrání před prachem a stříkající vodou ze všech směrů). Pro vyšší spolehlivost v průmyslovém prostředí se často používá IP65 (chrání před prachem a tryskající vodou).
 
 ---
